@@ -92,6 +92,3 @@ print(tabulate(game_log, headers='keys', tablefmt='psql', showindex=False))
 
 print("Win percentage of " + str(home_team) + " is " + str(win_pct) + " %.")
 
-print('hello')
-print('hello'*3)
-
