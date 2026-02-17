@@ -2,6 +2,7 @@ from nba_api.stats.endpoints import leaguegamefinder
 from nba_api.live.nba.endpoints import scoreboard
 from tabulate import tabulate
 import pandas as pd
+import sys
 
 pd.set_option('display.max.columns', None)
 
@@ -18,7 +19,8 @@ match_numbers = []
 print('Active matches are listed bellow -- What match would you like to follow?')
 
 if not games_data:
-    print("No active matches")
+    print("No active matches, try again tomorrow.")
+    sys.exit()
 else:
     for i,game in enumerate(games_data,1):
         home_team = game['homeTeam']['teamName']
