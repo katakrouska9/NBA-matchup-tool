@@ -23,8 +23,8 @@ if not games_data:
     sys.exit()
 else:
     for i,game in enumerate(games_data,1):
-        home_team = game['homeTeam']['teamName']
-        away_team = game['awayTeam']['teamName']
+        home_team = game['homeTeam']['teamCity'] + " " + game['homeTeam']['teamName']
+        away_team = game['awayTeam']['teamCity'] + " " + game['awayTeam']['teamName']
         status = game['gameStatusText'] # This says "Live", "Final", or "7:30 PM"
         
         match_name= f"{away_team} vs {home_team}"
@@ -64,10 +64,11 @@ games = gamefinder.get_data_frames()[0]
 games.sort_values('GAME_DATE', ascending = False)
 #games[games['TEAM_ABBREVIATION'] == "AUS"]
 
+games[games['TEAM_NAME']== 'Pistons'].value_counts()
 # Translating team names to abbreviations
-home_team_abr=games.loc[games['TEAM_NAME']== " "+ home_team,'TEAM_ABBREVIATION'].iloc[0]
+home_team_abr=games.loc[games['TEAM_NAME']== home_team,'TEAM_ABBREVIATION'].iloc[0]
 #home_team_abr=games.loc[games['TEAM_NAME']== "Cleveland Cavaliers",'TEAM_ABBREVIATION'].iloc[0]
-away_team_abr=games.loc[games['TEAM_NAME']== " "+ away_team,'TEAM_ABBREVIATION'].iloc[0]
+away_team_abr=games.loc[games['TEAM_NAME']== away_team,'TEAM_ABBREVIATION'].iloc[0]
 #away_team_abr=games.loc[games['TEAM_NAME']== "Golden State Warriors",'TEAM_ABBREVIATION'].iloc[0]
 match_code = home_team_abr + " vs. " + away_team_abr
 
