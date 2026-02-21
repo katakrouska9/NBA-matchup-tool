@@ -64,7 +64,7 @@ games = gamefinder.get_data_frames()[0]
 games.sort_values('GAME_DATE', ascending = False)
 #games[games['TEAM_ABBREVIATION'] == "AUS"]
 
-games[games['TEAM_NAME']== 'Pistons'].value_counts()
+
 # Translating team names to abbreviations
 home_team_abr=games.loc[games['TEAM_NAME']== home_team,'TEAM_ABBREVIATION'].iloc[0]
 #home_team_abr=games.loc[games['TEAM_NAME']== "Cleveland Cavaliers",'TEAM_ABBREVIATION'].iloc[0]
